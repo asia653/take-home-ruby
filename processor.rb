@@ -11,7 +11,12 @@ module Github
         end
 
         def print_issues(state: "closed")
-            self.issues(state: state).sort.reverse.each(&:format)
+            self.issues(state: state)
+                .filter {|issue| issue["pull_request"].nil? }
+                .map {|data| Github::Issue.new(data)}
+                .sort
+                .reverse
+                .each(&:format)
         end
 
         def issues(state: "closed")
@@ -35,9 +40,7 @@ module Github
                 break if issues.empty?
             
                 all_issues.concat(issues)
-                    # issues
-                    #     .filter {|issue| issue["pull_request"].nil? }
-                    #     .map {|data| Github::Issue.new(data)}
+
                 
                 page += 1
             end

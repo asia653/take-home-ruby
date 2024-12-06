@@ -1,5 +1,7 @@
+require 'debug'
 module Github
   class Issue
+    include Comparable
     attr_reader :title, :state, :created_at, :closed_at
 
     def initialize(data)
@@ -10,10 +12,10 @@ module Github
     end
 
     def <=>(other)
-      if state == 'closed'
-        closed_at <=> other.closed_at
+      if self.state == 'closed'
+        self.closed_at <=> other.closed_at
       else
-        created_at <=> other.created_at
+        self.created_at <=> other.created_at
       end
     end
 
