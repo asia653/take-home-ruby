@@ -1,11 +1,13 @@
 The repository contains a basic Github client for its REST API.
 
 ## Requirements
-* Ruby 3.1
-* Access to at least one Github repository
-* Please create a personal access token for your personal account so that the Github API requests work. The repository is public, so any token will work.
+
+- Ruby 3.1
+- Access to at least one Github repository
+- Please create a personal access token for your personal account so that the Github API requests work. The repository is public, so any token will work.
 
 ## Instructions
+
 It needs to be run at the command line like this
 
 ```
@@ -17,4 +19,3 @@ issues returned are open or closed, and then displays them in decreasing order o
 
 1. If you selected open issues, the date used is the issue's created date.
 1. Else, it's the issues' closed date.
-
